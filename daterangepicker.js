@@ -682,6 +682,8 @@
         },
 
         clickApply: function (e) {
+            if (this.minDate && this.startDate && this.startDate.isBefore(this.minDate)) this.setStartDate(this.minDate);//bug fix startdate cannot be before mindate.
+            if (this.maxDate && this.endDate && this.endDate.isAfter(this.maxDate)) this.setEndDate(this.maxDate);//bug fix enddate cannot be after maxdate.
             this.updateInputText();
             this.hide();
             this.element.trigger('apply.daterangepicker', this);
